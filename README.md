@@ -5,20 +5,12 @@
  Sign language is one of the oldest and most natural form of language for communication, hence we have come up with a real time method using neural networks for finger spelling based American sign language. Automatic human gesture recognition from camera images is an interesting topic for developing vision. We propose a convolution neural network (CNN) method to recognize hand gestures of human actions from an image captured by camera. The purpose is to recognize hand gestures of human task activities from a camera image. The position of hand and orientation are applied to obtain the training and testing data for the CNN. The hand is first passed through a filter and after the filter is applied where the hand is passed through a classifier which predicts the class of the hand gestures. Then the calibrated images are used to train CNN. 
  
  
- The Final Outcome Of Our Project...
- 
- https://user-images.githubusercontent.com/99630855/201496149-e7004402-16b2-4d72-8e1a-ff20c422c565.mp4
-
-
-
 **Introduction:**
 
  American sign language is a predominant sign language Since the only disability D&M people have been communication related and they cannot use spoken languages hence the only way for them to communicate is through sign language. Communication is the process of exchange of thoughts and messages in various ways such as speech, signals, behavior and visuals. Deaf and dumb(D&M) people make use of their hands to express different gestures to express their ideas with other people. Gestures are the nonverbally exchanged messages and these gestures are understood with vision. This nonverbal communication of deaf and dumb people is called sign language. 
 
 In our project we basically focus on producing a model which can recognise Fingerspelling based hand gestures in order to form a complete word by combining each gesture. The gestures we aim to train are as given in the image below. 
 
-
-![Spanish_SL](https://user-images.githubusercontent.com/99630855/201489493-585ffe5c-f460-402a-b558-0d03370b4f92.jpg)
 
 **Requirements:**
 
@@ -47,48 +39,10 @@ It uses electromechanical devices to provide exact hand configuration, and posit
 In vision-based methods, the computer webcam is the input device for observing the information of hands and/or fingers. The Vision Based methods require only a camera, thus realizing a natural interaction between humans and computers without the use of any extra devices, thereby reducing costs.  The main challenge of vision-based hand detection ranges from coping with the large variability of the human hand’s appearance due to a huge number of hand movements, to different skin-color possibilities as well as to the variations in viewpoints, scales, and speed of the camera capturing the scene. 
 
  
-![Screenshot (224)](https://user-images.githubusercontent.com/99630855/201489523-0804652e-1a38-4242-ad69-8bfafb25f55a.png)
-
- 
 
 **Data pre-processing and Feature extraction:**
 
 In this approach for hand detection, firstly we detect hand from image that is acquired by webcam and for detecting a hand we used media pipe library which is used for image processing. So, after finding the hand from image we get the region of interest (Roi) then we cropped that image and convert the image to gray image using OpenCV library after we applied the gaussian blur .The filter can be easily applied using open computer vision library also known as OpenCV. Then we converted the gray image to binary image using threshold and Adaptive threshold methods. 
-
-We have collected images of different signs of different angles  for sign letter A to Z. 
-
- ![fdfScreenshot (227)](https://user-images.githubusercontent.com/99630855/201489564-04b0416d-f976-4946-80d3-01bab6897ce3.png) 
-
-- in this method there are many loop holes like your hand must be ahead of clean soft background and that is in proper lightning condition then only this method will give good accurate results but in real world we dont get good background everywhere and we don’t get good lightning conditions too. 
-
-So to overcome this situation we try different approaches then we reached at one interesting solution in which firstly we detect hand from frame using mediapipe and get the hand landmarks of hand present in that image then we draw and connect those landmarks in simple white image  
-
-Mediapipe Landmark System: 
-
-![2410344](https://user-images.githubusercontent.com/99630855/201489741-3649959e-df4d-4c32-898a-8f994be92ca2.png)
-
-![a12](https://user-images.githubusercontent.com/99630855/201490095-96402d48-b289-4ff3-9738-ed99ffcffca6.jpg)
-
-![a23](https://user-images.githubusercontent.com/99630855/201490105-87b17583-45c5-4e3b-82d1-0c9a6f98fc55.jpg)
-
-![7](https://user-images.githubusercontent.com/99630855/201490124-dc41d7ad-313f-47b7-b50c-0f9db3155e0d.jpg)
-
-![b11](https://user-images.githubusercontent.com/99630855/201490119-55ff1b2d-1826-4bc6-994e-8c8c528c8c35.jpg)
-
-![b16](https://user-images.githubusercontent.com/99630855/201490122-46d87005-ccb6-46ac-9dcf-185a569d6958.jpg)
-
-![127](https://user-images.githubusercontent.com/99630855/201490130-b0aae39b-a623-4cf8-b41d-0611c02637ed.jpg)
- 
-
-Now we get this landmark points and draw it in plain white background using opencv library 
-
--By doing this we tackle the situation of background and lightning conditions because the mediapipe labrary will give us landmark points in any background and mostly in any lightning conditions. 
-
-
-![2022-10-31](https://user-images.githubusercontent.com/99630855/201489669-1b262755-23f8-4e02-91ba-393aa6482620.png)
-![2022-10-31 (1)](https://user-images.githubusercontent.com/99630855/201489673-08a8dad8-30a4-426a-8f62-02190416191d.png)
-
- ![hhee2022-10-31 (2)](https://user-images.githubusercontent.com/99630855/201496302-f67b360a-1ef5-4486-8ff7-cc56cee30b97.png)
 
 
 -we have collected 180 skeleton images of Alphabets from A to Z 
@@ -117,8 +71,6 @@ The layer consists of learnable filters of window size. During every iteration I
 
 As I continue this process well create a 2-Dimensional activation matrix that gives the response of that matrix at every spatial position. 
 
-That is, the network will learn filters that activate when they see some type of visual feature such as an edge of some orientation or a blotch of some colour. 
-![cnn](https://user-images.githubusercontent.com/99630855/201490154-1416d8ad-c7df-42a2-a296-5d56bad1d5c5.png)
 
 **Pooling Layer:**
 
@@ -138,7 +90,6 @@ In average pooling we take average of all Values in a window.
 
 pooling 
 
-![pooling](https://user-images.githubusercontent.com/99630855/201490158-22a8a043-c2fe-4082-8fb5-a6c173061b58.jpg)
 
 **Fully Connected Layer:**
 
@@ -146,7 +97,6 @@ In convolution layer neurons are connected only to a local region, while in a fu
 
 Fully Connected Layer 
 
-![fullyConnectedLayer](https://user-images.githubusercontent.com/99630855/201490169-00b17306-e355-4d2e-88e5-3fbd4c7b3f17.png)
  
 
 The preprocessed 180 images/alphabet will feed the keras CNN model.  
@@ -172,10 +122,6 @@ So when model will classify [aemnst] in one single class using mathematical oper
 
 -Finally, we got **97%** Accuracy (with and without clean background and proper lightning conditions) through our method. And if the background is clear and there is good lightning condition then we got even **99%** accurate results 
 
-![2022-11-01 (2)](https://user-images.githubusercontent.com/99630855/201489689-3adeacf0-ca19-471d-8942-cf7effc6296a.png)
-![2022-11-01 (3)](https://user-images.githubusercontent.com/99630855/201489695-d14822c4-3a48-41c3-9cde-8fac4d835f65.png)
-![2022-11-01 (4)](https://user-images.githubusercontent.com/99630855/201489697-168c8ca3-e4b3-4fc5-9e3a-97b239971c27.png)
-![2022-11-01 (5)](https://user-images.githubusercontent.com/99630855/201489700-78b38657-16c0-45ac-88ec-ef06ada7870e.png)
 
 **Text To Speech Translation:**
 
@@ -191,7 +137,7 @@ Webcam
 
 Operating System: Windows 8 and Above 
 
-IDE: PyCharm 
+IDE: Vs code 
 
 Programming Language: Python 3.9 5 
 
