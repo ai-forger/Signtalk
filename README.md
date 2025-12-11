@@ -1,169 +1,123 @@
-**Sign-Language-To-Text-and-Speech-Conversion**
-
-**ABSTRACT:** 
-
- Sign language is one of the oldest and most natural form of language for communication, hence we have come up with a real time method using neural networks for finger spelling based American sign language. Automatic human gesture recognition from camera images is an interesting topic for developing vision. We propose a convolution neural network (CNN) method to recognize hand gestures of human actions from an image captured by camera. The purpose is to recognize hand gestures of human task activities from a camera image. The position of hand and orientation are applied to obtain the training and testing data for the CNN. The hand is first passed through a filter and after the filter is applied where the hand is passed through a classifier which predicts the class of the hand gestures. Then the calibrated images are used to train CNN. 
- 
- 
-**Introduction:**
-
- American sign language is a predominant sign language Since the only disability D&M people have been communication related and they cannot use spoken languages hence the only way for them to communicate is through sign language. Communication is the process of exchange of thoughts and messages in various ways such as speech, signals, behavior and visuals. Deaf and dumb(D&M) people make use of their hands to express different gestures to express their ideas with other people. Gestures are the nonverbally exchanged messages and these gestures are understood with vision. This nonverbal communication of deaf and dumb people is called sign language. 
-
-In our project we basically focus on producing a model which can recognise Fingerspelling based hand gestures in order to form a complete word by combining each gesture. The gestures we aim to train are as given in the image below. 
-
-
-**Requirements:**
-
-More than 70 million deaf people around the world use sign languages to communicate. Sign language allows them to learn, work, access services, and be included in the communities.  
-
-It is hard to make everybody learn the use of sign language with the goal of ensuring that people with disabilities can enjoy their rights on an equal basis with others. 
-
-So, the aim is to develop a user-friendly human computer interface (HCI) where the computer understands the American sign language This Project will help the dumb and deaf people by making their life easy. 
-
-
-**Objective:**
-To create a computer software and train a model using CNN which takes an image of hand gesture of American Sign Language and shows the output of the particular sign language in text format converts it into audio format. 
-
-
-**Scope:**
-This System will be Beneficial for Both Dumb/Deaf People and the People Who do not understands the Sign Language. They just need to do that with sign Language gestures and this system will identify what he/she is trying to say after identification it gives the output in the form of Text as well as Speech format. 
-
-**Modules:**
-
-**Data Acquisition :**
-
-The different approaches to acquire data about the hand gesture can be done in the following ways: 
-
-It uses electromechanical devices to provide exact hand configuration, and position. Different glove-based approaches can be used to extract information. But it is expensive and not user friendly. 
-
-In vision-based methods, the computer webcam is the input device for observing the information of hands and/or fingers. The Vision Based methods require only a camera, thus realizing a natural interaction between humans and computers without the use of any extra devices, thereby reducing costs.  The main challenge of vision-based hand detection ranges from coping with the large variability of the human hand’s appearance due to a huge number of hand movements, to different skin-color possibilities as well as to the variations in viewpoints, scales, and speed of the camera capturing the scene. 
-
- 
-
-**Data pre-processing and Feature extraction:**
-
-In this approach for hand detection, firstly we detect hand from image that is acquired by webcam and for detecting a hand we used media pipe library which is used for image processing. So, after finding the hand from image we get the region of interest (Roi) then we cropped that image and convert the image to gray image using OpenCV library after we applied the gaussian blur .The filter can be easily applied using open computer vision library also known as OpenCV. Then we converted the gray image to binary image using threshold and Adaptive threshold methods. 
-
-
--we have collected 180 skeleton images of Alphabets from A to Z 
-
-**Gesture Classification :**
-
-**Convolutional Neural Network (CNN)**
-
-CNN is a class of neural networks that are highly useful in solving computer vision problems. They found inspiration from the actual perception of vision that takes place in the visual cortex of our brain. They make use of a filter/kernel to scan through the entire pixel values of the image and make computations by setting appropriate weights to enable detection of a specific feature. CNN is equipped with layers like convolution layer, max pooling layer, flatten layer, dense layer, dropout layer and a fully connected neural network layer. These layers together make a very powerful tool that can identify features in an image. The starting layers detect low level features that gradually begin to detect more complex higher-level features 
-
- 
-
-Unlike regular Neural Networks, in the layers of CNN, the neurons are arranged in 3 dimensions: width, height, depth. 
-
-The neurons in a layer will only be connected to a small region of the layer (window size) before it, instead of all of the neurons in a fully-connected manner. 
-
-Moreover, the final output layer would have dimensions(number of classes), because by the end of the CNN architecture we will reduce the full image into a single vector of class scores. 
-
-CNN 
-
-**Convolutional Layer:**
-
-In convolution layer I have taken a small window size [typically of length 5*5] that extends to the depth of the input matrix. 
-
-The layer consists of learnable filters of window size. During every iteration I slid the window by stride size [typically 1], and compute the dot product of filter entries and input values at a given position. 
-
-As I continue this process well create a 2-Dimensional activation matrix that gives the response of that matrix at every spatial position. 
-
-
-**Pooling Layer:**
-
-We use pooling layer to decrease the size of activation matrix and ultimately reduce the learnable parameters. 
-
-There are two types of pooling: 
-
-   **a. Max Pooling:**
-
-In max pooling we take a window size [for example window of size 2*2], and only taken the maximum of 4 values. 
-
-Well lid this window and continue this process, so well finally get an activation matrix half of its original Size. 
-
-  **b. Average Pooling:** 
-
-In average pooling we take average of all Values in a window. 
-
-pooling 
-
-
-**Fully Connected Layer:**
-
-In convolution layer neurons are connected only to a local region, while in a fully connected region, well connect the all the inputs to neurons. 
-
-Fully Connected Layer 
-
- 
-
-The preprocessed 180 images/alphabet will feed the keras CNN model.  
-
-Because we got bad accuracy in 26 different classes thus, We divided whole 26 different alphabets into 8 classes in which every class contains similar alphabets: 
-[y,j] 
-
-[c,o] 
-
-[g,h] 
-
-[b,d,f,I,u,v,k,r,w] 
-
-[p,q,z] 
-
-[a,e,m,n,s,t] 
-
-All the gesture labels will be assigned with a  
-
-probability. The label with the highest probability will treated to be the predicted label. 
-
-So when model will classify [aemnst] in one single class using mathematical operation on hand landmarks we will classify further into single alphabet a or e or m or n or s or t. 
-
--Finally, we got **97%** Accuracy (with and without clean background and proper lightning conditions) through our method. And if the background is clear and there is good lightning condition then we got even **99%** accurate results 
-
-
-**Text To Speech Translation:**
-
-The model translates known gestures into words. we have used pyttsx3 library to convert the recognized words into the appropriate speech. The text-to-speech output is a simple workaround, but it's a useful feature because it simulates a real-life dialogue. 
-
-**Project Requirements :**
-
-**Hardware Requirement:**
-
-Webcam 
-
-**Software Requirement:**
-
-Operating System: Windows 8 and Above 
-
-IDE: Vs code 
-
-Programming Language: Python 3.9 5 
-
-Python libraries: OpenCV, NumPy, Keras,mediapipe,Tensorflow 
-
-
-**System Diagrams:**
-
-
-**System Flowchart:**
-
-![system flowchart](https://user-images.githubusercontent.com/99630855/201490238-224f65aa-071f-473a-8c23-a9d60e0a47d8.png)
-
-
-**Use-case diagram:**
-
-![Untitled Diagram drawio](https://user-images.githubusercontent.com/99630855/201490218-85f4c194-0496-4dfb-b920-e486256bd6b7.png)
- 
-**DFD diagram:**
-
-![Flowcharts (2)](https://user-images.githubusercontent.com/99630855/201490221-f543fa6d-75ba-4db0-bc35-ee8c06e25018.png)
-![Flowcharts (1)](https://user-images.githubusercontent.com/99630855/201490226-966bcc44-8149-433d-ab3b-b0a23deb1c91.png)
- 
-
-**Sequence diagram:**
-
-![sequence2](https://user-images.githubusercontent.com/99630855/201490230-b903c365-7a4c-4972-8268-5687060b9cd0.png)
-
- 
+# Enhanced Sign Language to Text and Speech Application
+
+## 🎯 Overview
+
+This is an enhanced version of the Sign Language to Text and Speech application with modern GUI, improved speech synthesis, and better user experience.
+
+## ✨ New Features
+
+### 🎨 Modern User Interface
+- **Attractive Design**: Modern dark theme with professional colors
+- **Visual Feedback**: Character highlighting and animations when letters are recognized
+- **Responsive Layout**: Clean, organized interface with labeled sections
+- **Enhanced Typography**: Modern fonts and improved readability
+
+### 🔊 Advanced Speech Features
+- **Instant Speech**: Text is spoken immediately as letters are recognized
+- **Better Voice Quality**: Improved TTS engine with natural-sounding voices
+- **Speech Controls**: Toggle speech on/off and manual speak button
+- **Background Processing**: Non-blocking speech synthesis
+
+### 🎮 Enhanced Controls
+- **SPACE Button**: Dedicated button to add spaces between words
+- **Clear Button**: Easy text clearing functionality
+- **Speech Toggle**: Turn speech synthesis on/off
+- **Word Suggestions**: Improved suggestion buttons with modern styling
+
+### ⚡ Performance Optimizations
+- **Responsive GUI**: Smooth real-time processing without lag
+- **Optimized Loops**: Efficient video processing and hand detection
+- **Threaded Speech**: Background speech processing for better performance
+
+## 🚀 Installation
+
+1. **Install Python Dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. **Ensure Model File**: Make sure `cnn8grps_rad1_model.h5` is in the same directory
+
+3. **Run the Application**:
+   ```bash
+   python enhanced_sign_language_app.py
+   ```
+
+## 🎮 How to Use
+
+### Basic Operation
+1. **Start the Application**: Run the Python script
+2. **Position Your Hand**: Place your hand in front of the camera
+3. **Sign Letters**: Use American Sign Language gestures
+4. **View Recognition**: See recognized characters in real-time
+5. **Build Words**: Combine letters to form words and sentences
+
+### Controls
+- **SPACE**: Add space between words
+- **Clear**: Clear all text
+- **Speech ON/OFF**: Toggle automatic speech synthesis
+- **Speak Now**: Manually trigger speech for current text
+- **Suggestion Buttons**: Click to replace current word with suggestions
+
+### Visual Feedback
+- **Character Display**: Large, highlighted current character
+- **Text Display**: Real-time sentence building
+- **Hand Skeleton**: Visual representation of detected hand landmarks
+- **Animations**: Character highlighting when new letters are recognized
+
+## 🔧 Technical Features
+
+### Preserved Functionality
+- ✅ Complete ASL-to-text prediction logic from original
+- ✅ MediaPipe hand landmark detection
+- ✅ CNN model integration
+- ✅ Word suggestion system
+- ✅ Spell checking with enchant
+
+### Enhanced Components
+- 🆕 Modern tkinter GUI with ttk styling
+- 🆕 Threaded speech synthesis
+- 🆕 Visual feedback system
+- 🆕 Improved error handling
+- 🆕 Better resource management
+
+## 📋 Requirements
+
+- Python 3.7+
+- Webcam/Camera
+- All dependencies listed in `requirements.txt`
+- Trained model file: `cnn8grps_rad1_model.h5`
+
+## 🎯 Key Improvements
+
+1. **User Experience**: Modern, intuitive interface
+2. **Performance**: Optimized for real-time processing
+3. **Accessibility**: Better visual and audio feedback
+4. **Functionality**: Enhanced controls and features
+5. **Reliability**: Improved error handling and stability
+
+## 🔄 Migration from Original
+
+The enhanced version is fully compatible with the original application:
+- Same model file and prediction logic
+- Same hand detection and processing
+- Enhanced UI and additional features
+- Drop-in replacement for the original
+
+## 🐛 Troubleshooting
+
+### Common Issues
+1. **Camera not detected**: Check camera permissions and connections
+2. **Model not found**: Ensure `cnn8grps_rad1_model.h5` is in the correct directory
+3. **Speech not working**: Check pyttsx3 installation and system audio
+4. **Performance issues**: Close other applications and ensure good lighting
+
+### Performance Tips
+- Use good lighting for better hand detection
+- Keep hand steady for accurate recognition
+- Close unnecessary applications for better performance
+- Ensure camera is properly positioned
+
+## 📝 License
+
+This enhanced version maintains compatibility with the original project while adding significant improvements to user experience and functionality.

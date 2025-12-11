@@ -1,0 +1,1 @@
+d:\python\python.exe d:\project\Signtalk\sign_talk.py

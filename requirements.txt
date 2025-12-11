@@ -1,0 +1,10 @@
+# Enhanced Sign Language to Text and Speech Application Requirements
+numpy>=1.23.0,<1.24.0
+opencv-python>=4.5.0,<5.0.0
+tensorflow>=2.12.0,<2.13.0
+keras>=2.12.0,<2.13.0
+cvzone>=1.5.0,<1.7.0
+pyttsx3>=2.90
+pyenchant>=3.2.0
+Pillow>=8.0.0,<12.0.0
+protobuf>=4.25.3,<5.0.0
